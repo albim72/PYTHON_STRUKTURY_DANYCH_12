@@ -23,7 +23,7 @@ try:
     print(datadict)
     print(type(datadict))
 
-    print("_"*50)
+    print("_" * 50)
     print("DANE ->")
     print(f"imię i nazwisko: {datadict['name']}\n"
           f"wiek: {datadict['age']}\n"
@@ -32,8 +32,17 @@ try:
           f"id zamówień: {datadict['last_ids']}\n"
           f"ulica: {datadict['address']['street']}\n"
           f"numer lokalu: {datadict['address']['local_nb']}\n")
-    json_d = json.dumps(datadict,indent=4)
+    json_d = json.dumps(datadict, indent=4)
     print(json_d)
+    with open("zamowienia.json", "w", encoding="UTF-8") as f:
+        f.write(json_d)
+
+    #odczyt dnych z pliku json
+    with open('zamowienia.json', 'r', encoding="UTF-8") as file:
+        data = json.load(file)
+
+    print(data)
+    print(type(data))
 
 except json.JSONDecodeError as e:
     print(f"błąd w parsowaniu: {e}")
